@@ -8,7 +8,7 @@ class FileParseService
   def call
     current_game = nil
 
-    File.foreach(@file.path) do |line|
+    File.foreach(@file) do |line|
       current_game = init_game if line.include? 'InitGame'
       new_player(line, current_game) if line.include? 'ClientUserinfoChanged'
       if line.include? 'Kill'
